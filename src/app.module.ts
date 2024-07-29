@@ -7,7 +7,6 @@ import { AppController } from './app.controller';
 import { AppHandler } from './app.handler';
 import { botMiddleware } from './middleware/bot.middleware';
 import { SetupModule } from './modules/setup';
-import { WelcomeModule } from './modules/welcome';
 
 @Module({
   imports: [
@@ -25,7 +24,6 @@ import { WelcomeModule } from './modules/welcome';
       },
     }),
     SetupModule,
-    WelcomeModule,
   ],
   controllers: [AppController],
   providers: [AppHandler],
