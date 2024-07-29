@@ -19,6 +19,6 @@ export class AppHandler {
 
     console.log('ctx.scene', ctx.scene);
 
-    await ctx.scene.enter('scenes.setup');
+    await ctx.scene.enter('setup');
   }
 }

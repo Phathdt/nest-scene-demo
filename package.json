@@ -24,6 +24,8 @@
     "@nestjs/config": "^3.2.3",
     "@nestjs/core": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
+    "@telegraf/session": "^2.0.0-beta.7",
+    "mongodb": "^6.8.0",
     "nestjs-i18n": "^10.4.5",
     "nestjs-telegraf": "^2.8.1",
     "reflect-metadata": "^0.2.0",
