@@ -1,15 +1,15 @@
 import { On, Scene, SceneEnter } from 'nestjs-telegraf';
 import { IContext } from 'src/shared';
 
-@Scene('setup')
-export class SetupScene {
+@Scene('start')
+export class StartScene {
   @SceneEnter()
-  async setup(ctx: IContext) {
-    ctx.reply('on setup');
+  async start(ctx: IContext) {
+    ctx.reply('on start');
   }
 
   @On('text')
   async onText(ctx: IContext) {
-    ctx.reply(`on Setup reply message${ctx.message.text}`);
+    ctx.reply(`on start reply message${ctx.message.text}`);
   }
 }

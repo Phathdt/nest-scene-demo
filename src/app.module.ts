@@ -6,7 +6,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppHandler } from './app.handler';
 import { botMiddleware } from './middleware/bot.middleware';
-import { SetupModule } from './modules/setup';
+import { HelpModule } from './modules/help';
+import { StartModule } from './modules/start';
 
 @Module({
   imports: [
@@ -23,7 +24,8 @@ import { SetupModule } from './modules/setup';
         };
       },
     }),
-    SetupModule,
+    StartModule,
+    HelpModule,
   ],
   controllers: [AppController],
   providers: [AppHandler],
