@@ -8,6 +8,7 @@ import { AppHandler } from './app.handler';
 import { sessionMiddleware } from './middleware/session.middleware';
 import { HelpModule } from './modules/help';
 import { StartModule } from './modules/start';
+import { TransferModule } from './modules/transfer';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { StartModule } from './modules/start';
     }),
     StartModule,
     HelpModule,
+    TransferModule,
   ],
   controllers: [AppController],
   providers: [AppHandler],
