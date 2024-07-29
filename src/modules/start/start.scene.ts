@@ -1,5 +1,6 @@
 import { On, Scene, SceneEnter } from 'nestjs-telegraf';
 import { IContext } from 'src/shared';
+import { SceneChange } from 'src/shared/decorator/sceneChange.decorator';
 
 @Scene('start')
 export class StartScene {
@@ -9,23 +10,10 @@ export class StartScene {
   }
 
   @On('text')
+  @SceneChange()
   async onText(ctx: IContext) {
     console.log('🚀 ~ StartScene ~ onText ~ ctx:', ctx.scene);
 
-    if (ctx.message && 'text' in ctx.message) {
-      const message = ctx.message.text;
-
-      if (message.startsWith('/')) {
-        const sceneName = message.substring(1);
-
-        const validScenes = ['help', 'start'];
-
-        if (validScenes.includes(sceneName)) {
-          return await ctx.scene.enter(sceneName);
-        }
-      }
-    }
-
-    ctx.reply(`on start reply message${ctx.message.text}`);
+    ctx.reply(`on start reply message ${ctx.message.text}`);
   }
 }

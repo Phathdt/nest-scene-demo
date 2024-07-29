@@ -1,5 +1,6 @@
 import { On, Scene, SceneEnter } from 'nestjs-telegraf';
 import { IContext } from 'src/shared';
+import { SceneChange } from 'src/shared/decorator/sceneChange.decorator';
 
 @Scene('help')
 export class HelpScene {
@@ -9,7 +10,10 @@ export class HelpScene {
   }
 
   @On('text')
+  @SceneChange()
   async onText(ctx: IContext) {
-    ctx.reply(`on help reply message${ctx.message.text}`);
+    console.log('🚀 ~ StartScene ~ onText ~ ctx:', ctx.scene);
+
+    ctx.reply(`on help reply message ${ctx.message.text}`);
   }
 }
