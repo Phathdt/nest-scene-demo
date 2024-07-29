@@ -1,4 +1,4 @@
-import { InjectBot, Start, Update } from 'nestjs-telegraf';
+import { Command, InjectBot, Update } from 'nestjs-telegraf';
 import { Telegraf } from 'telegraf';
 
 import { IContext } from './shared';
@@ -13,12 +13,13 @@ export class AppHandler {
     });
   }
 
-  @Start()
-  async start(ctx: IContext) {
-    await ctx.reply('start');
+  @Command('start')
+  onStart(ctx: IContext) {
+    ctx.scene.enter('start');
+  }
 
-    console.log('ctx.scene', ctx.scene);
-
-    await ctx.scene.enter('start');
+  @Command('help')
+  onHelp(ctx: IContext) {
+    ctx.scene.enter('help');
   }
 }
