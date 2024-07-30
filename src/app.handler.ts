@@ -1,18 +1,9 @@
-import { Command, InjectBot, Update } from 'nestjs-telegraf';
-import { Telegraf } from 'telegraf';
+import { Command, Update } from 'nestjs-telegraf';
 
 import { IContext } from './shared';
 
 @Update()
 export class AppHandler {
-  constructor(@InjectBot() private bot: Telegraf<IContext>) {
-    this.bot.use(async (ctx, next) => {
-      console.log(`Bot Update`, JSON.stringify(ctx.update, null, 4));
-
-      return next();
-    });
-  }
-
   @Command('start')
   onStart(ctx: IContext) {
     ctx.scene.enter('start');
@@ -21,5 +12,15 @@ export class AppHandler {
   @Command('help')
   onHelp(ctx: IContext) {
     ctx.scene.enter('help');
+  }
+
+  @Command('transfer')
+  onTransfer(ctx: IContext) {
+    ctx.scene.enter('transfer');
+  }
+
+  @Command('list_transaction')
+  onListTransaction(ctx: IContext) {
+    ctx.scene.enter('list_transaction');
   }
 }

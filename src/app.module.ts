@@ -7,6 +7,7 @@ import { AppController } from './app.controller';
 import { AppHandler } from './app.handler';
 import { sessionMiddleware } from './middleware/session.middleware';
 import { HelpModule } from './modules/help';
+import { ListTransactionModule } from './modules/listTransaction/listTransaction.module';
 import { StartModule } from './modules/start';
 import { TransferModule } from './modules/transfer';
 
@@ -28,6 +29,7 @@ import { TransferModule } from './modules/transfer';
     StartModule,
     HelpModule,
     TransferModule,
+    ListTransactionModule,
   ],
   controllers: [AppController],
   providers: [AppHandler],
