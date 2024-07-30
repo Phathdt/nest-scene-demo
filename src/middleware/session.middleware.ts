@@ -2,13 +2,11 @@ import { IContext } from 'src/shared';
 import { session, SessionStore } from 'telegraf';
 
 import { ConfigService } from '@nestjs/config';
-import { Mongo } from '@telegraf/session/mongodb';
+import { Redis } from '@telegraf/session/redis';
 
 export function sessionMiddleware(configService: ConfigService) {
-  const store = Mongo({
-    url: configService.get<string>('MONGODB_URI'),
-    database: 'bot',
-    collection: 'Sessions',
+  const store = Redis({
+    url: configService.get<string>('REDIS_URI'),
   }) as SessionStore<IContext>;
 
   return session({
