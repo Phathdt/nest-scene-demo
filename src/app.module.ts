@@ -5,7 +5,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 import { AppController } from './app.controller';
 import { AppHandler } from './app.handler';
-import { commandMiddleware } from './middleware/logger.middleware';
 import { sessionMiddleware } from './middleware/session.middleware';
 import { HelpModule } from './modules/help';
 import { ListTransactionModule } from './modules/listTransaction/listTransaction.module';
@@ -20,7 +19,7 @@ import { TransferModule } from './modules/transfer';
       inject: [ConfigService],
       useFactory(configService: ConfigService): TelegrafModuleOptions {
         return {
-          middlewares: [sessionMiddleware(configService), commandMiddleware],
+          middlewares: [sessionMiddleware(configService)],
           include: [AppModule],
           token: configService.getOrThrow<string>('BOT_TOKEN'),
           launchOptions: {},
